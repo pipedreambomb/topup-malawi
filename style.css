@@ -1,25 +1,54 @@
+/* general-purpose classes */
 .center {
 	text-align:center;
 }
 
+.right {
+	text-align:right;
+}
+
+.floatright {
+	float: right;
+}
+
+/* site-wide appearances */
 h1 {
 	font-family: 'Grand Hotel', cursive;
-	margin:2em;
 }
 
 body {
 	font-family: 'Telex', sans-serif;
 }
 
+/* template layout */
+div#mainwrapper {
+	width:40em;
+	margin:0 auto;
+}
+
 div#top {
-	height:5em
+}
+
+div#topright a {
+	margin-right: 3em;
 }
 
 div#topright {
 	float:right
 }
 
-div#mainwrapper {
-	width:40em;
-	margin:0 auto;
+div#middle {
+	margin-top:3em;
+}
+
+/* specific page styles */
+
+form#TopupForm {
+	font-size: large;
+	text-align: center;
+}
+
+form#TopupForm #HowWorks {
+	font-size: smaller;
+	font-style: italic;
 }
