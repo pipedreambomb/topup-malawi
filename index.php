@@ -6,15 +6,16 @@ class Index extends Template {
 	protected function printMiddleSection(){
 
 ?>
-<form action="go.php">
+<form id=TopupForm action="go.php">
 	<h1>I live in Malawi, I use  
-		<select>
+		<select id="Telco">
 			<option>Airtel</option>
 			<option>TNM</option>
 		</select>
 	</h1>
 	<h1>and I would like to buy
-		<select id=amountchooser class=inlinechooser>
+		<select id=Amount>
+			<? include "Airtel.htm"; ?>
 		</select>
 	   Kwacha airtime.
 	<input type=submit value="Ok"></input>

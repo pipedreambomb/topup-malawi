@@ -10,6 +10,7 @@ public function render() {
 		<title>Buy Topups</title>
 		<link rel="stylesheet" href="style.css"/>
 		<link href='http://fonts.googleapis.com/css?family=Grand+Hotel|Telex' rel='stylesheet' type='text/css'>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<script type="text/javascript" src="js.js"></script>
 	</head>
 	<body>
