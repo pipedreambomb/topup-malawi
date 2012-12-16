@@ -1,0 +1,25 @@
+.center {
+	text-align:center;
+}
+
+h1 {
+	font-family: 'Grand Hotel', cursive;
+	margin:2em;
+}
+
+body {
+	font-family: 'Telex', sans-serif;
+}
+
+div#top {
+	height:5em
+}
+
+div#topright {
+	float:right
+}
+
+div#mainwrapper {
+	width:40em;
+	margin:0 auto;
+}
