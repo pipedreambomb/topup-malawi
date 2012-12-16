@@ -6,10 +6,10 @@ class Go extends Template {
 	protected function content(){
 
 ?>
-<script type="text/javascript" src="go.js"></script>
+<script type="text/javascript" src="js/go.js"></script>
 <h1>Order confirmation</h1>
 
-<table>
+<table class="table">
 	<tr>
 		<td><strong>Provider:</strong></td>
 		<td><?= $_POST['Telco'] ?></td>
@@ -24,10 +24,14 @@ class Go extends Template {
 payment, we will send you the topups in the form of codes to type into your phone as usual.
 We get these from real scratchcards, and we <strong>cannot give refunds</strong> after we have sent them out, as we have no way of verifying if they are used after this.</p>
 
-<form class=alignright action="#">
-	<input type=checkbox name=Accept id=AcceptChk></input>
-	<label for=Accept>I have read and accept these conditions</label>
-	<input type=submit disabled=true id=Submit></input>
+<form class="" action="#">
+	<div class="form-actions form-inline pull-right">
+		<label class="control-label">
+			<input type=checkbox name=Accept id=AcceptChk></input>
+			I have read and accept these conditions
+		</label>
+		<input type=submit disabled=true id=Submit class="btn btn-warning"></input>
+	</div>
 </form>
 
 		<?
