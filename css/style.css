@@ -20,14 +20,10 @@ body {
 	font-family: 'Telex', sans-serif;
 }
 
-/* specific page styles */
-
-form#TopupForm {
-	font-size: large;
-	text-align: center;
+div.masthead { 
+	margin-bottom: 4em;
 }
 
-form#TopupForm #HowWorks {
-	font-size: smaller;
-	font-style: italic;
+span.popoverme {
+	border-bottom: 1px dotted #999;
 }

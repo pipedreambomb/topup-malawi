@@ -19,9 +19,10 @@ class Index extends Template {
 		<select id=Amount name=Amount>
 			<? include "Airtel.htm"; ?>
 		</select>
-	   Kwacha airtime.
+	   Kwacha's worth of airtime topups.
 	</h1>
-	<p class="center"><a href="#" id=HowWorks>How does this work?</a><input type=submit value="Go" class="btn btn-success"></input></p>
+	<p><input type=submit value="Show me the topups!" class="btn btn-large btn-success pull-right"></input></p>
+	<p><small><span class='popoverme'>How does it work?</span></small></p>
 </form>
 </div>
 <?

@@ -6004,7 +6004,7 @@ a.badge:hover {
   margin-bottom: 0;
   font-size: 60px;
   line-height: 1;
-  letter-spacing: -1px;
+  /*letter-spacing: -1px;*/
   color: inherit;
 }
 
