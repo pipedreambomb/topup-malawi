@@ -2,7 +2,7 @@ topup-malawi
 ============
 
 A prototype of how a phone topup/airtime website could work in Malawi, where I've found no way to top-up my phone online.
-I've started this project as a demonstration of how a site like this could work. I'm putting the source code on GitHub and would be delighted if anyone wanted to take up the baton (I'm going back to the UK in four weeks).
+I've started this project as a demonstration of how a site like this could work. I'm putting the source code on GitHub and would be delighted if anyone wanted to take up the baton (I'm going back to the UK on 18th Jan 2013).
 
 1. Requirements
 ---------------
