@@ -14,4 +14,4 @@ To get started with this website, you will need
 2. Configuration
 ----------------
 
-First, you will need to run db/topup.sql on your MySQL database to recreate the requisite database. Next, copy db/sample_db.php to db/db.php and configure it with your own MySQL details. That's it, at this point!
+First, you will need to run db/topup.sql on your MySQL database to recreate the requisite database. Next, copy db/sample_db.php to db/db.php and configure it with your own MySQL details. Finally, enable the shortcut <? php tags. That's it, at this point!

@@ -1,4 +1,4 @@
-db.php
+db_cfg.php
 app/tmp/
 nbproject/
 *.swp

@@ -10,10 +10,7 @@ class Index extends Template {
 <div class="hero-unit">
 <form method="post" id=TopupForm action="go.php">
 	<h1>I live in <span class="text-warning">Malawi</span>, my phone uses   
-		<select id=Telco name=Telco>
-			<option>Airtel</option>
-			<option>TNM</option>
-		</select>
+		<? include "helpers/telcos.php"; ?>
 	</h1>
 	<h1>and I would like to buy
 		<select id=Amount name=Amount>
