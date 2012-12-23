@@ -9,7 +9,7 @@ class Index extends Template {
 <script type="text/javascript" src="js/index.js"></script>
 <div class="hero-unit">
 <form method="post" id=TopupForm action="go.php">
-	<h1>I live in Malawi, my phone uses   
+	<h1>I live in <span class="text-warning">Malawi</span>, my phone uses   
 		<select id=Telco name=Telco>
 			<option>Airtel</option>
 			<option>TNM</option>
@@ -21,8 +21,8 @@ class Index extends Template {
 		</select>
 	   Kwacha's worth of airtime topups.
 	</h1>
-	<p><input type=submit value="Show me the topups!" class="btn btn-large btn-success pull-right"></input></p>
-	<p><small><span class='popoverme'>How does it work?</span></small></p>
+	<div><button type="submit" class="btn btn-large btn-success pull-right">Send me some topups! <i class="icon-download-alt icon-white"></i></button></div>
+	<div><small><span class='popoverme'>How does it work?</span></small></div>
 </form>
 </div>
 <?

@@ -1,0 +1,6 @@
+app/tmp/
+nbproject/
+*.swp
+*.swo
+*.ctp~
+*.js~
