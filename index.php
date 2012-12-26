@@ -23,6 +23,14 @@ class Index extends Template {
 	</h1>
 	<h1>and I would like to buy
 		<select id=Amount name=Amount>
+		<?php
+			try {
+				$denoms = Database::getDenominations($telcos[0]);	
+			} catch (Exception $e){}
+			foreach ($denoms as $denom) {
+				echo sprintf("<option>%s</option>", $denom["amount"]); 
+			}
+		?>	
 		</select>
 	   Kwacha's worth of airtime topups.
 	</h1>

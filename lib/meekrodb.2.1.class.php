@@ -544,7 +544,7 @@ class MeekroDB {
       }
       
       $sql = substr_replace($sql, $result, $new_pos, $length_type + $arg_number_length);
-      $pos_adj += strlen($result) - ($length_type + $arg_number_length);
+      $pos_adj += strlen($result[0]) - ($length_type + $arg_number_length);
     }
     return $sql;
   }

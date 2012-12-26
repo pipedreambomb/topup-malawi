@@ -27,4 +27,10 @@ class TestOfPage extends WebTestCase {
 		$this->getLocalPage("index.php");
 		$this->assertFieldByName("Telco", "Airtel");
 	}
+
+	function testHomePageNoErrors() {
+		$this->getLocalPage("index.php");
+		$this->assertNoText("Warning:");
+		$this->assertNoText("Notice:");
+	}
 }

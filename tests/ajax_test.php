@@ -40,8 +40,8 @@ class TestOfAjax extends WebTestCase {
 	function testGetDenominationsWorksForAirtel() {
 		$get = $this->getLocalPage('ajax/getDenominations.php', array('telco' => 'Airtel'));
 		$this->checkJSON($get);
-		$this->assertText("1000");
-		$this->assertText("5000");
+		$this->assertText("1,000");
+		$this->assertText("5,000");
 		
 	}
 }
