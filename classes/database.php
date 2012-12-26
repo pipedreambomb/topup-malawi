@@ -1,6 +1,6 @@
 <?php
 // Class for handling all sorts of database interactions
-require_once "../db/db_cfg.php";
+require_once(dirname(dirname(__FILE__)) . "/db/db_cfg.php");
 
 class Database {
 

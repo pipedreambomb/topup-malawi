@@ -18,12 +18,24 @@ class TestOfAjax extends WebTestCase {
 	}
 
 	//Because local $this->get() calls don't seem to work
-	function getLocalPage($url) {
-		return $this->get($this->sitePrefix . $url);
-//		echo($this->sitePrefix . $url);
+	function getLocalPage($url, $params = null) {
+		return $this->get($this->sitePrefix . $url, $params);
 	}
 
-	function testGetTelcoReturnsString() {
-		$this->assertTrue($this->getLocalPage('ajax/getTelcos.php'));
+	function testGetTelcoReturnsJSON() {
+		$test = $this->getLocalPage('ajax/getTelcos.php');
+		$this->assertText("Airtel");
+		$this->assertNotEqual(null, json_decode($test), "JSON decoded okay"); 
+		$this->assertMime("application/json");
+		
+	}
+
+	function testGetDenominationsWorksForAirtel() {
+		$test = $this->getLocalPage('ajax/getDenominations.php', array('telco' => 'Airtel'));
+		$this->assertText("1000");
+		$this->assertText("5000");
+		$this->assertNotEqual(null, json_decode($test), "JSON decoded okay"); 
+		$this->assertMime("application/json");
+		
 	}
 }

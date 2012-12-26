@@ -1,4 +1,5 @@
 <?
+require_once('classes/database.php');
 require_once "template.php";
 
 class Index extends Template {
@@ -10,11 +11,18 @@ class Index extends Template {
 <div class="hero-unit">
 <form method="post" id=TopupForm action="go.php">
 	<h1>I live in <span class="text-warning">Malawi</span>, my phone uses   
-		<? include "helpers/telcos.php"; ?>
+		<select id=Telco name=Telco>
+		<?
+			// print a select box with Telcos from database
+			$telcos = Database::getTelcos();
+			foreach ($telcos as $telco) {
+				echo sprintf("<option>%s</option>", $telco["name"]); 
+			}
+		?>
+		</select>
 	</h1>
 	<h1>and I would like to buy
 		<select id=Amount name=Amount>
-			<? include "Airtel.htm"; ?>
 		</select>
 	   Kwacha's worth of airtime topups.
 	</h1>
