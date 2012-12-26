@@ -42,6 +42,6 @@ class TestOfAjax extends WebTestCase {
 		$this->checkJSON($get);
 		$this->assertText("1,000");
 		$this->assertText("5,000");
-		
+		$this->assertNoText(".", "No decimal places");	
 	}
 }
