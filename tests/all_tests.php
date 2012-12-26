@@ -4,7 +4,9 @@ set_include_path(get_include_path() . PATH_SEPARATOR . $path);
 require_once('ReporterShowingPasses.php');
 require_once("simpletest/web_tester.php");
 require_once("simpletest/unit_tester.php");
+require_once("simpletest/autorun.php");
 require_once("../classes/database.php");
+require_once("../classes/order.php");
 
 class AllTests extends TestSuite {
 	function AllTests() {
@@ -12,9 +14,7 @@ class AllTests extends TestSuite {
 		$this->addFile('db_test.php');
 		$this->addFile('ajax_test.php');
 		$this->addFile('page_test.php');
+		$this->addFile('order_test.php');
 	}
 }
-$tests = new AllTests();
-//$tests->run(new ReporterShowingPasses());
-$tests->run(new HtmlReporter());
 ?>
