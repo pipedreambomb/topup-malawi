@@ -1,6 +1,11 @@
 function refreshSelector(){
-	telco = $("#TopupForm #Telco").val()
-	$("#TopupForm #Amount").empty().load(telco + ".htm")
+	var telco = $("#TopupForm #Telco").val()
+	var amountSlc = $("#TopupForm #Amount").empty()
+	$.getJSON("ajax/getDenominations.php?telco=" + telco, function(data) {
+		$.each(data, function(key, val) {
+			amountSlc.append("<option>" + val.amount + "</option>")	
+		})			
+	})
 }
 
 function setPopover() {
