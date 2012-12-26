@@ -1,4 +1,4 @@
-<?
+<?php
 require_once "template.php";
 
 class About extends Template {

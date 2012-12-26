@@ -1,4 +1,4 @@
-<?
+<?php
 // GN - This is a sample file, I am not putting my actual details in the public
 // source code repo for obvious reasons!
 //

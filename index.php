@@ -1,4 +1,4 @@
-<?
+<?php
 require_once('classes/database.php');
 require_once "template.php";
 
@@ -13,7 +13,7 @@ class Index extends Template {
 <form method="post" id=TopupForm action="go.php">
 	<h1>I live in <span class="text-warning">Malawi</span>, my phone uses   
 		<select id=Telco name=Telco>
-<?
+<?php
 		// print a select box with Telcos from database
 		$telcos = Database::getTelcos();
 		foreach ($telcos as $telco) {
@@ -25,6 +25,7 @@ class Index extends Template {
 	<h1>and I would like to buy
 		<select id=Amount name=Amount>
 <?php
+			$denoms = Database::getDenominations($telcos[0]);
 			foreach ($denoms as $denom) {
 				echo sprintf("<option>%s</option>", $denom["amount"]); 
 			}
@@ -36,7 +37,7 @@ class Index extends Template {
 	<div><small><span class='popoverme'>How does it work?</span></small></div>
 </form>
 </div>
-<?
+<?php
 	}
 
 }

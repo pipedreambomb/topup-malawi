@@ -1,4 +1,4 @@
-<?
+<?php
 require_once "template.php";
 
 class Go extends Template {
@@ -12,11 +12,11 @@ class Go extends Template {
 <table class="table">
 	<tr>
 		<td><strong>Provider:</strong></td>
-		<td><?= $_POST['Telco'] ?></td>
+		<td><?php echo $_POST['Telco'] ?></td>
 	</tr>
 	<tr>
 		<td><strong>Amount:</strong></td>
-		<td><?= $_POST['Amount'] ?>MKw</td>
+		<td><?php echo $_POST['Amount'] ?>MKw</td>
 	</tr>
 </table>
 <p>You will receive your topup voucher code(s) as soon as we receive payment from PayPal, where you will be redirected after agreeing to our terms and confirming the order. PayPal is a leading financial services provider, securely processing credit card and bank transfers without revealing your personal details or banking information.</p>
@@ -33,7 +33,7 @@ We get these from real scratchcards, so we <strong>cannot give refunds</strong> 
 		<input type=submit disabled=true id=Submit class="btn btn-warning"></input>
 	</div>
 </form>
-		<?
+		<?php
 	}
 }
 

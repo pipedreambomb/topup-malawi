@@ -1,4 +1,4 @@
-<?
+<?php
 // getTelcos.php
 // Returns a list of Telco names, e.g. Airtel, in JSON format
 header('Content-Type: application/json');

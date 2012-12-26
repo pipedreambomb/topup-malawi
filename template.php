@@ -1,4 +1,4 @@
-<?
+<?php
 abstract class Template {
 
 // This is the bit that concrete classes use to do their thing.
@@ -31,10 +31,10 @@ public function render() {
 				<a href="index.php"><img src="img/topup.png"></img></a>
 			</div>
 			<div id="middle" class="">
-				<? echo $this->content()?>
+				<?php echo $this->content()?>
 			</div>
 		</div>
 	</body>
 </html>
-<? }
+<?php }
 }

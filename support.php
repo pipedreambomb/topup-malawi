@@ -1,4 +1,4 @@
-<?
+<?php
 require_once "template.php";
 
 class Support extends Template {
