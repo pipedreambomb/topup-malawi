@@ -22,20 +22,26 @@ class TestOfAjax extends WebTestCase {
 		return $this->get($this->sitePrefix . $url, $params);
 	}
 
-	function testGetTelcoReturnsJSON() {
-		$test = $this->getLocalPage('ajax/getTelcos.php');
-		$this->assertText("Airtel");
-		$this->assertNotEqual(null, json_decode($test), "JSON decoded okay"); 
+	/*
+	 * Check JSON results are valid JSON
+	 * @param $get result from get request
+	 */
+	function checkJSON($get) {
+		$this->assertNotEqual(null, json_decode($get), "JSON decoded okay"); 
 		$this->assertMime("application/json");
-		
+	}
+
+	function testGetTelcoReturnsJSON() {
+		$get = $this->getLocalPage('ajax/getTelcos.php');
+		$this->checkJSON($get);
+		$this->assertText("Airtel");
 	}
 
 	function testGetDenominationsWorksForAirtel() {
-		$test = $this->getLocalPage('ajax/getDenominations.php', array('telco' => 'Airtel'));
+		$get = $this->getLocalPage('ajax/getDenominations.php', array('telco' => 'Airtel'));
+		$this->checkJSON($get);
 		$this->assertText("1000");
 		$this->assertText("5000");
-		$this->assertNotEqual(null, json_decode($test), "JSON decoded okay"); 
-		$this->assertMime("application/json");
 		
 	}
 }

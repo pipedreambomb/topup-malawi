@@ -15,5 +15,6 @@ class AllTests extends TestSuite {
 	}
 }
 $tests = new AllTests();
-$tests->run(new ReporterShowingPasses());
+//$tests->run(new ReporterShowingPasses());
+$tests->run(new HtmlReporter());
 ?>
