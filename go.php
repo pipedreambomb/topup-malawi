@@ -1,22 +1,36 @@
 <?php
 require_once "template.php";
+require_once(dirname(__FILE__) . "/classes/order.php");
+require_once(dirname(__FILE__) . "/classes/MockDatabaseFactory.php");
 
 class Go extends Template {
 
 	protected function content(){
 
+	$order = new Order($_POST['Telco'], $_POST['Amount']);
+	$order->build();
 ?>
 <script type="text/javascript" src="js/go.js"></script>
 <h1>Order confirmation</h1>
 
 <table class="table">
 	<tr>
-		<td><strong>Provider:</strong></td>
-		<td><?php echo $_POST['Telco'] ?></td>
+		<th>Provider:</th>
+		<th>Topup Amount:</th>
 	</tr>
+<?php
+	//print each topup
+	for($i = 0; $i < $order->count(); $i++) {
+		$topup = $order->getTopup($i); ?>
 	<tr>
-		<td><strong>Amount:</strong></td>
-		<td><?php echo $_POST['Amount'] ?>MKw</td>
+		<td><?php echo $_POST['Telco']; ?></td>
+		<td><?php echo $topup ?></td>
+	</tr>
+	<?php
+	}
+?>
+	<tr>
+	<td colspan="2">Total: <?php echo $order->sum(); ?><td>
 	</tr>
 </table>
 <p>You will receive your topup voucher code(s) as soon as we receive payment from PayPal, where you will be redirected after agreeing to our terms and confirming the order. PayPal is a leading financial services provider, securely processing credit card and bank transfers without revealing your personal details or banking information.</p>

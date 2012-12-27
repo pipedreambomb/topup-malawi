@@ -32,9 +32,10 @@ class TestOfAjax extends WebTestCase {
 	}
 
 	function testGetTelcoReturnsJSON() {
-		$get = $this->getLocalPage('ajax/getTelcos.php');
+		$get = $this->getLocalPage('ajax/getTelcos.php', array("test" => true));
 		$this->checkJSON($get);
 		$this->assertText("Airtel");
+		$this->assertText("TestTelco");
 	}
 
 	function testGetDenominationsWorksForAirtel() {

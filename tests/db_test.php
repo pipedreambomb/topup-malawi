@@ -1,4 +1,7 @@
 <?php
+
+require_once(dirname(dirname(__FILE__)) . "/classes/MockDatabaseFactory.php");
+
 class TestOfDatabase extends DatabaseTestCase {
 
 	function TestOfDatabase() {
@@ -6,7 +9,7 @@ class TestOfDatabase extends DatabaseTestCase {
 	}
 
 	function setUp() {
-		$this->generateMockDatabase();
+		$this->mockDatabase = MockDatabaseFactory::getInstance();
 	}
 
 	function testTelcoListIsNotEmpty() {

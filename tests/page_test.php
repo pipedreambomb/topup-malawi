@@ -11,6 +11,13 @@ class TestOfPage extends WebTestCase {
 		$this->setSitePrefix();
 	}
 
+	function checkNoErrors() {
+		$this->assertNoText("Fatal error:");
+		$this->assertNoText("Parse error:");
+		$this->assertNoText("Warning:");
+		$this->assertNoText("Notice:");
+	}
+
 	//This is a very naive way of doing this. If you know a better one, have a go!
 	function setSitePrefix() {
 		$this->sitePrefix = "http://" . $_SERVER["HTTP_HOST"]
@@ -20,17 +27,24 @@ class TestOfPage extends WebTestCase {
 	//Because local $this->get() calls don't seem to work
 	function getLocalPage($url) {
 		return $this->get($this->sitePrefix . $url);
-//		echo($this->sitePrefix . $url);
+	}
+
+	function postLocalPage($url, $post) {
+		return $this->post($this->sitePrefix . $url, $post);
 	}
 
 	function testHomePageSetToAirtelByDefault() {
 		$this->getLocalPage("index.php");
 		$this->assertFieldByName("Telco", "Airtel");
+		$this->checkNoErrors();
 	}
 
-	function testHomePageNoErrors() {
-		$this->getLocalPage("index.php");
-		$this->assertNoText("Warning:");
-		$this->assertNoText("Notice:");
+	function testGoPageDisplaysEachTopup() {
+
+		$this->postLocalPage("go.php", array("test" => true, "Telco" => "Airtel", "Amount" => "6000"));
+		$this->assertText("1000", "Displays little topup");
+		$this->assertText("5000", "Displays big topup");
+		$this->assertText("6000", "Displays total");
+		$this->checkNoErrors();
 	}
 }

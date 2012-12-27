@@ -1,4 +1,10 @@
 <?php
+
+//GN - disable Notices as one from here is messing up my pages and I don't know
+// where to get started fixing SimpleTest code!
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
+
 /**
  *  base include file for SimpleTest
  *  @package    SimpleTest
@@ -659,7 +665,10 @@ class SimpleMock {
         $this->max_counts = array();
         $this->expected_args = array();
         $this->expected_args_at = array();
-        $this->getCurrentTestCase()->tell($this);
+	$testCase = $this->getCurrentTestCase();
+	if (isset($testCase)) {
+		$testCase->tell($this);
+	}
     }
 
     /**
