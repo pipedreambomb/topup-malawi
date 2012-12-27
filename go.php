@@ -7,7 +7,8 @@ class Go extends Template {
 
 	protected function content(){
 
-	$order = new Order($_POST['Telco'], $_POST['Amount']);
+	$db = isset($_POST['test']) ? MockDatabaseFactory::getInstance() : null;
+	$order = new Order($_POST['Telco'], $_POST['Amount'], $db);
 	$order->build();
 ?>
 <script type="text/javascript" src="js/go.js"></script>

@@ -26,8 +26,8 @@ class Index extends Template {
 		<select id=Amount name=Amount>
 <?php
 			$denoms = Database::getDenominations($telcos[0]);
-			foreach ($denoms as $denom) {
-				echo sprintf("<option>%s</option>", $denom["amount"]); 
+			for($i = 1; $i <= 5; $i++) {
+				echo sprintf("<option>%s</option>", $denoms[0]["amount"] * $i * $i); 
 			}
 ?>	
 		</select>
