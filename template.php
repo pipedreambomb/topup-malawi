@@ -1,4 +1,6 @@
 <?php
+error_reporting(-1);
+
 abstract class Template {
 
 // This is the bit that concrete classes use to do their thing.

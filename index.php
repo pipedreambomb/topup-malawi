@@ -6,6 +6,7 @@ class Index extends Template {
 
 	protected function content(){
 
+		$database = new Database();
 ?>
 <script type="text/javascript" src="js/index.js"></script>
 
@@ -15,7 +16,7 @@ class Index extends Template {
 		<select id=Telco name=Telco>
 <?php
 		// print a select box with Telcos from database
-		$telcos = Database::getTelcos();
+		$telcos = $database->getTelcos();
 		foreach ($telcos as $telco) {
 			echo sprintf("<option>%s</option>", $telco["name"]); 
 		}
@@ -25,7 +26,7 @@ class Index extends Template {
 	<h1>and I would like to buy
 		<select id=Amount name=Amount>
 <?php
-			$denoms = Database::getDenominations($telcos[0]);
+			$denoms = $database->getDenominations($telcos[0]);
 			for($i = 1; $i <= 5; $i++) {
 				echo sprintf("<option>%s</option>", $denoms[0]["amount"] * $i * $i); 
 			}
