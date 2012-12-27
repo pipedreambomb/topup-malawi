@@ -1,16 +1,20 @@
 <?php
-class TestOfOrders extends DatabaseTestCase {
+class TestOfOrders extends UnitTestCase {
+
+	private $database;
+
 	function TestOfOrders() {
 		parent::__construct("Orders Test Case");
 	}
 
 	function setUp() {
-		$this->generateMockDatabase();
+
+		$this->database = MockDatabaseFactory::getInstance();
 	}
 
 	function testBuildOrderFromTarget() {
 		$target = 2000;
-		$order = new Order("Airtel", $target, $this->mockDatabase);
+		$order = new Order("Airtel", $target, $this->database);
 		$order->build();
 		$this->assertEqual($order->count(), 2, "Two topups used");
 		$this->assertEqual($order->getTopup(0), 1000, "First topup is 1000mkw");
@@ -21,7 +25,7 @@ class TestOfOrders extends DatabaseTestCase {
 	function testBuildUsesBiggestTopups() {
 
 		$target = 5000;
-		$order = new Order("Airtel", $target, $this->mockDatabase);
+		$order = new Order("Airtel", $target, $this->database);
 		$order->build();
 		$this->assertEqual($order->count(), 1, "One topups used");
 		$this->assertEqual($order->getTopup(0), 5000, "Only topup is 5000mkw");
@@ -32,7 +36,7 @@ class TestOfOrders extends DatabaseTestCase {
 	function testBuildUsesCombinationOfTopupSizes() {
 
 		$target = 6000;
-		$order = new Order("Airtel", $target, $this->mockDatabase);
+		$order = new Order("Airtel", $target, $this->database);
 		$order->build();
 		$this->assertEqual($order->count(), 2, "Two topups used");
 		$this->assertEqual($order->getTopup(0), 5000, "First topup is 5000mkw");
@@ -44,7 +48,7 @@ class TestOfOrders extends DatabaseTestCase {
 	function testImpossibleTarget() {
 
 		$target = 2001;
-		$order = new Order("Airtel", $target, $this->mockDatabase);
+		$order = new Order("Airtel", $target, $this->database);
 		$this->expectException(new Exception("Could not generate order for 2001. Generated order totalling 2000 with 1 remaining."));
 		$order->build();
 	}
@@ -53,7 +57,7 @@ class TestOfOrders extends DatabaseTestCase {
 
 		$target = "hr3h92h90";
 		$this->expectException(new Exception("Requested order total is not a numeric value."));
-		$order = new Order("Airtel", $target, $this->mockDatabase);
+		$order = new Order("Airtel", $target, $this->database);
 	}
 
 }
