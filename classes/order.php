@@ -3,13 +3,13 @@
 class Order {
 
 	public $topups;
-	public $targetSum, $telco;
+	public $target, $telco;
 	private $database;
 
-	function __construct($telco, $targetSum, $database = null) {
+	function __construct($telco, $target, $database = null) {
 
 		$this->telco = $telco;
-		$this->targetSum = $targetSum;
+		$this->target = $target;
 		$this->topups = array();
 		if($database == null) {
 			$database = new Database();
@@ -23,14 +23,23 @@ class Order {
 	 */
 	function build() {
 		$denoms = $this->database->getDenominations($this->telco, "DESC");
-		while($this->targetSum > $this->sum()
+		while($this->target > $this->sum()
 			&& count($denoms) > 0) {
 
-			if($denoms[0]['amount'] <= $this->targetSum - $this->sum()) {
+			if($denoms[0]['amount'] <= $this->target - $this->sum()) {
 				array_push($this->topups, $denoms[0]['amount']);
 			} else {
 				array_shift($denoms);
 			}	
+		}
+		$this->checkHitTarget();
+	}
+
+	function checkHitTarget() {
+		$sum = $this->sum();
+		if($sum != $this->target) {
+			$this->topups = array();
+			throw new Exception(sprintf("Could not generate order for %d. Generated order totalling %d with %d remaining.", $this->target, $sum, $this->target - $sum));
 		}
 	}
 

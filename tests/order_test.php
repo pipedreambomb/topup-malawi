@@ -1,19 +1,11 @@
 <?php
-class TestOfOrders extends UnitTestCase {
+class TestOfOrders extends DatabaseTestCase {
 	function TestOfOrders() {
 		parent::__construct("Orders Test Case");
 	}
 
 	function setUp() {
-		Mock::generate('Database');
-		$this->mockDatabase = new MockDatabase();
-		$this->mockDatabase->returns("getTelcos", array(array("name" => "Airtel"), array("name" => "TNM")));
-
-		$mockDenomsAsc = array(0 => array("amount" => 1000, "nice_amount" => "1,000"), 1 => array("amount" => 5000, "nice_amount" => "5,000"));
-		$this->mockDatabase->returns("getDenominations", $mockDenomsAsc, array("Airtel"));
-
-		$mockDenomsDesc = array(0 =>array("amount" => 5000, "nice_amount" => "5,000") , 1 => array("amount" => 1000, "nice_amount" => "1,000"));
-		$this->mockDatabase->returns("getDenominations", $mockDenomsDesc, array("Airtel", "DESC"));
+		$this->generateMockDatabase();
 	}
 
 	function testBuildOrderFromTarget() {
@@ -24,6 +16,37 @@ class TestOfOrders extends UnitTestCase {
 		$this->assertEqual($order->topups[0], 1000, "First topup is 1000mkw");
 		$this->assertEqual($order->topups[1], 1000);
 		$this->assertEqual($order->sum(), $target, "Order total matches target");
+	}
+
+	function testBuildUsesBiggestTopups() {
+
+		$target = 5000;
+		$order = new Order("Airtel", $target, $this->mockDatabase);
+		$order->build();
+		$this->assertEqual(count($order->topups), 1, "One topups used");
+		$this->assertEqual($order->topups[0], 5000, "Only topup is 5000mkw");
+		$this->assertEqual($order->sum(), $target, "Order total matches target");
+
+	}
+
+	function testBuildUsesCombinationOfTopupSizes() {
+
+		$target = 6000;
+		$order = new Order("Airtel", $target, $this->mockDatabase);
+		$order->build();
+		$this->assertEqual(count($order->topups), 2, "Two topups used");
+		$this->assertEqual($order->topups[0], 5000, "First topup is 5000mkw");
+		$this->assertEqual($order->topups[1], 1000, "Second topup is 1000mkw");
+		$this->assertEqual($order->sum(), $target, "Order total matches target");
+
+	}
+
+	function testImpossibleTarget() {
+
+		$target = 2001;
+		$order = new Order("Airtel", $target, $this->mockDatabase);
+		$this->expectException(new Exception("Could not generate order for 2001. Generated order totalling 2000 with 1 remaining."));
+		$order->build();
 	}
 }
 ?>
