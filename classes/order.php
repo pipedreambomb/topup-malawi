@@ -2,10 +2,17 @@
 
 class Order {
 
-	public $topups;
-	public $target, $telco;
-	private $database;
+	private $target, $telco, $database, $topups;
 
+	/* 
+	 * Order - represents a combination of topups that add up
+	 * to a given total
+	 * @param String $telco - name of the telco
+	 * @param int $target - amount desired to be the total
+	 * @param Database $database (optional) - used for testing, can pass in a
+	 * 	mock database object if preferred
+	 * @returns Order
+	 */
 	function __construct($telco, $target, $database = null) {
 
 		$this->telco = $telco;
@@ -19,7 +26,7 @@ class Order {
 		$this->validateTargetIsNumeric();
 	}
 
-	function validateTargetIsNumeric() {
+	private function validateTargetIsNumeric() {
 		if(! is_numeric($this->target)) {
 			throw new Exception ("Requested order total is not a numeric value.");
 		}
@@ -43,7 +50,7 @@ class Order {
 		$this->checkHitTarget();
 	}
 
-	function checkHitTarget() {
+	private	function checkHitTarget() {
 		$sum = $this->sum();
 		if($sum != $this->target) {
 			$this->topups = array();
@@ -59,5 +66,22 @@ class Order {
 			$sum += $topup;
 		}
 		return $sum;
+	}
+
+	/*
+	 * Accessor method to obtain a particular topup
+	 * @param index of the topup in the collection
+	 * @returns int Specified topup 
+	 */
+	function getTopup($index) {
+		return $this->topups[$index];
+	}
+
+	/*
+	 * Accessor method to obtain a count of the topups array
+	 * @returns array Count of the topups in the Order
+	 */
+	function count() {
+		return count($this->topups);
 	}
 }

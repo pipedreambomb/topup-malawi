@@ -12,9 +12,9 @@ class TestOfOrders extends DatabaseTestCase {
 		$target = 2000;
 		$order = new Order("Airtel", $target, $this->mockDatabase);
 		$order->build();
-		$this->assertEqual(count($order->topups), 2, "Two topups used");
-		$this->assertEqual($order->topups[0], 1000, "First topup is 1000mkw");
-		$this->assertEqual($order->topups[1], 1000);
+		$this->assertEqual($order->count(), 2, "Two topups used");
+		$this->assertEqual($order->getTopup(0), 1000, "First topup is 1000mkw");
+		$this->assertEqual($order->getTopup(1), 1000);
 		$this->assertEqual($order->sum(), $target, "Order total matches target");
 	}
 
@@ -23,8 +23,8 @@ class TestOfOrders extends DatabaseTestCase {
 		$target = 5000;
 		$order = new Order("Airtel", $target, $this->mockDatabase);
 		$order->build();
-		$this->assertEqual(count($order->topups), 1, "One topups used");
-		$this->assertEqual($order->topups[0], 5000, "Only topup is 5000mkw");
+		$this->assertEqual($order->count(), 1, "One topups used");
+		$this->assertEqual($order->getTopup(0), 5000, "Only topup is 5000mkw");
 		$this->assertEqual($order->sum(), $target, "Order total matches target");
 
 	}
@@ -34,9 +34,9 @@ class TestOfOrders extends DatabaseTestCase {
 		$target = 6000;
 		$order = new Order("Airtel", $target, $this->mockDatabase);
 		$order->build();
-		$this->assertEqual(count($order->topups), 2, "Two topups used");
-		$this->assertEqual($order->topups[0], 5000, "First topup is 5000mkw");
-		$this->assertEqual($order->topups[1], 1000, "Second topup is 1000mkw");
+		$this->assertEqual($order->count(), 2, "Two topups used");
+		$this->assertEqual($order->getTopup(0), 5000, "First topup is 5000mkw");
+		$this->assertEqual($order->getTopup(1), 1000, "Second topup is 1000mkw");
 		$this->assertEqual($order->sum(), $target, "Order total matches target");
 
 	}
