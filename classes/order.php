@@ -15,6 +15,14 @@ class Order {
 			$database = new Database();
 		}
 		$this->database = $database;
+
+		$this->validateTargetIsNumeric();
+	}
+
+	function validateTargetIsNumeric() {
+		if(! is_numeric($this->target)) {
+			throw new Exception ("Requested order total is not a numeric value.");
+		}
 	}
 
 	/* 

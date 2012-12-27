@@ -48,5 +48,13 @@ class TestOfOrders extends DatabaseTestCase {
 		$this->expectException(new Exception("Could not generate order for 2001. Generated order totalling 2000 with 1 remaining."));
 		$order->build();
 	}
+
+	function testNonNumericTarget() {
+
+		$target = "hr3h92h90";
+		$this->expectException(new Exception("Requested order total is not a numeric value."));
+		$order = new Order("Airtel", $target, $this->mockDatabase);
+	}
+
 }
 ?>
