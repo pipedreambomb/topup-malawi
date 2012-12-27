@@ -42,9 +42,9 @@ class TestOfPage extends WebTestCase {
 	function testGoPageDisplaysEachTopup() {
 
 		$this->postLocalPage("go.php", array("test" => true, "Telco" => "Airtel", "Amount" => "6000"));
-		$this->assertText("1000", "Displays little topup");
-		$this->assertText("5000", "Displays big topup");
-		$this->assertText("6000", "Displays total");
+		$this->assertText("1,000", "Displays little topup");
+		$this->assertText("5,000", "Displays big topup");
+		$this->assertText("6,000", "Displays total");
 		$this->checkNoErrors();
 	}
 }

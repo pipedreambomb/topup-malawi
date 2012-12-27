@@ -25,13 +25,14 @@ class Go extends Template {
 		$topup = $order->getTopup($i); ?>
 	<tr>
 		<td><?php echo $_POST['Telco']; ?></td>
-		<td><?php echo $topup ?></td>
+		<td><?php echo $topup['nice_amount'] ?></td>
 	</tr>
 	<?php
 	}
 ?>
 	<tr>
-	<td colspan="2">Total: <?php echo $order->sum(); ?><td>
+		<th>Total:</th>
+		<th><?php echo number_format($order->sum(), 0); ?></th>
 	</tr>
 </table>
 <p>You will receive your topup voucher code(s) as soon as we receive payment from PayPal, where you will be redirected after agreeing to our terms and confirming the order. PayPal is a leading financial services provider, securely processing credit card and bank transfers without revealing your personal details or banking information.</p>

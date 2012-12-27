@@ -42,7 +42,7 @@ class Order {
 			&& count($denoms) > 0) {
 
 			if($denoms[0]['amount'] <= $this->target - $this->sum()) {
-				array_push($this->topups, $denoms[0]['amount']);
+				array_push($this->topups, $denoms[0]);
 			} else {
 				array_shift($denoms);
 			}	
@@ -63,7 +63,7 @@ class Order {
 	function sum() {
 		$sum = 0;
 		foreach($this->topups as $topup) {
-			$sum += $topup;
+			$sum += $topup['amount'];
 		}
 		return $sum;
 	}
@@ -75,6 +75,15 @@ class Order {
 	 */
 	function getTopup($index) {
 		return $this->topups[$index];
+	}
+
+	/*
+	 * Accessor method to obtain a particular topup's value
+	 * @param index of the topup in the collection
+	 * @returns int Specified topup amount
+	 */
+	function getTopupAmount($index) {
+		return $this->topups[$index]['amount'];
 	}
 
 	/*
