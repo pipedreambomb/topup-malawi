@@ -1,6 +1,7 @@
 db_cfg.php
 app/tmp/
 nbproject/
+.idea/
 *.swp
 *.swo
 *.ctp~

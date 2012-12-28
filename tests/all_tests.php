@@ -1,12 +1,11 @@
 <?php
 $path = dirname(dirname(__FILE__));
 set_include_path(get_include_path() . PATH_SEPARATOR . $path);
-require_once('ReporterShowingPasses.php');
 require_once("simpletest/web_tester.php");
 require_once("simpletest/unit_tester.php");
 require_once("simpletest/autorun.php");
-require_once("../classes/database.php");
-require_once("../classes/order.php");
+require_once("../classes/Database.php");
+require_once("../classes/Order.php");
 
 class AllTests extends TestSuite {
 	function AllTests() {

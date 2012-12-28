@@ -1,9 +1,9 @@
 <?php
-require_once "template.php";
-require_once(dirname(__FILE__) . "/classes/order.php");
+require_once "classes/Page.php";
+require_once(dirname(__FILE__) . "/classes/Order.php");
 require_once(dirname(__FILE__) . "/classes/MockDatabaseFactory.php");
 
-class Go extends Template {
+class Go extends Page {
 
 	protected function content(){
 
@@ -19,17 +19,7 @@ class Go extends Template {
 		<th>Provider:</th>
 		<th>Topup Amount:</th>
 	</tr>
-<?php
-	//print each topup
-	for($i = 0; $i < $order->count(); $i++) {
-		$topup = $order->getTopup($i); ?>
-	<tr>
-		<td><?php echo $_POST['Telco']; ?></td>
-		<td><?php echo $topup['nice_amount'] ?></td>
-	</tr>
-	<?php
-	}
-?>
+    <?php $this->printAllTopupRows($order); ?>
 	<tr>
 		<th>Total:</th>
 		<th><?php echo number_format($order->sum(), 0); ?></th>
@@ -51,6 +41,19 @@ We get these from real scratchcards, so we <strong>cannot give refunds</strong> 
 </form>
 		<?php
 	}
+
+    private function printAllTopupRows($order)
+    {
+        for ($i = 0; $i < $order->count(); $i++) {
+            $topup = $order->getTopup($i);
+        ?>
+            <tr>
+                <td><?php echo $_POST['Telco']; ?></td>
+                <td><?php echo $topup['nice_amount'] ?></td>
+            </tr>
+        <?php
+        }
+    }
 }
 
 $page = new Go();

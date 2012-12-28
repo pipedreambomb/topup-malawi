@@ -1,7 +1,7 @@
 <?php 
 
 require_once(dirname(dirname(__FILE__)) . '/tests/simpletest/mock_objects.php');
-require_once("database.php");
+require_once("Database.php");
 
 class MockDatabaseFactory {
 

@@ -8,7 +8,7 @@ I've started this project as a demonstration of how a site like this could work.
 ---------------
 
 To get started with this website, you will need 
-1) a PHP web server like Apache
+1) a PHP web server like Apache (mine is running PHP 5.3; I haven't tested on earlier versions)
 2) a MySQL database and a user account you can use
 
 2. Configuration

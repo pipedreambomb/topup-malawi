@@ -57,7 +57,7 @@ class TestOfOrders extends UnitTestCase {
 
 		$target = "hr3h92h90";
 		$this->expectException(new Exception("Requested order total is not a numeric value."));
-		$order = new Order("Airtel", $target, $this->database);
+		new Order("Airtel", $target, $this->database); //exception thrown in constructor
 	}
 
 }

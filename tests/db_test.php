@@ -4,6 +4,8 @@ require_once(dirname(dirname(__FILE__)) . "/classes/MockDatabaseFactory.php");
 
 class TestOfDatabase extends UnitTestCase {
 
+    private $mockDatabase;
+
 	function TestOfDatabase() {
 		parent::__construct("Database Test Case");
 	}

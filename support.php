@@ -1,7 +1,7 @@
 <?php
-require_once "template.php";
+require_once "classes/Page.php";
 
-class Support extends Template {
+class Support extends Page {
 
 	protected function content(){
 	}

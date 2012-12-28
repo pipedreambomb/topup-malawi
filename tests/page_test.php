@@ -29,13 +29,13 @@ class TestOfPage extends WebTestCase {
 		return $this->get($this->sitePrefix . $url);
 	}
 
-	function postLocalPage($url, $post) {
-		return $this->post($this->sitePrefix . $url, $post);
+	function postLocalPage($url, $postParams) {
+		return $this->post($this->sitePrefix . $url, $postParams);
 	}
 
 	function testHomePageSetToAirtelByDefault() {
 		$this->getLocalPage("index.php");
-		$this->assertFieldByName("Telco", "Airtel");
+		$this->assertFieldByName("Telco", "Airtel"); //Not a good test, does not use MockDB
 		$this->checkNoErrors();
 	}
 
