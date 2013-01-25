@@ -26,11 +26,11 @@ public function render() {
 		<div id="mainwrapper" class="container">
 			<div id=top class="masthead">
 				<ul class="nav nav-pills pull-right">
-				  <li id="HomeButton"><a href="home.php">Home</a></li>
+				  <li id="HomeButton"><a href="index.php">Home</a></li>
 				  <li><a href="about.php">About</a></li>
 				  <li><a href="support.php">Support</a></li>
 				</ul>
-				<a href="home.php"><img src="img/topup.png"></img></a>
+				<a href="index.php"><img src="img/topup.png"></img></a>
 			</div>
 			<div id="middle" class="">
 				<?php echo $this->content()?>

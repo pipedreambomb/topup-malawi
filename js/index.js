@@ -2,9 +2,9 @@ function refreshSelector(){
 	var telco = $("#TopupForm #Telco").val()
 	var amountSlc = $("#TopupForm #Amount").empty()
 	$.getJSON("ajax/getDenominations.php?telco=" + telco, function(data) {
-		$.each(data, function(key, val) {
-			amountSlc.append("<option>" + val.amount + "</option>")	
-		})			
+		for(var i = 1; i <= 5; i++) {
+			amountSlc.append("<option>" + i * i * data[0].amount + "</option>")	
+		}
 	})
 }
 
