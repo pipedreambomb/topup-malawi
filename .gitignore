@@ -2,6 +2,9 @@ db_cfg.php
 app/tmp/
 nbproject/
 .idea/
+.buildpath
+.project
+.settings/
 *.swp
 *.swo
 *.ctp~

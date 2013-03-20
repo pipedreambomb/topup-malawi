@@ -20,7 +20,7 @@ public function render() {
 
 		<!-- JavaScript scripts -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-		<script src="js/bootstrap.js"></script>
+		<script src="js/lib/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<div id="mainwrapper" class="container">
