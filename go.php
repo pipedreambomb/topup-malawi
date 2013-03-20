@@ -30,7 +30,7 @@ class Go extends Page {
 payment, we will email you the topups in the form of code(s) to type into your phone as usual.
 We get these from real scratchcards, so we <strong>cannot give refunds</strong> after we have sent them out, as we are unable to check if you make use of the code(s). All topup codes in our database are carefully verified. Customer satisfaction is our higher priority, so for any other enquiries, please do not hesitate to <a href="support.php">contact us</a>.</p>
 
-<form class="" action="#">
+<form class="" action="confirmed.php">
 	<div class="form-actions form-inline pull-right">
 		<label class="control-label">
 			<input type=checkbox name=Accept id=AcceptChk></input>

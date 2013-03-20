@@ -47,4 +47,13 @@ class TestOfPage extends WebTestCase {
 		$this->assertText("6,000", "Displays total");
 		$this->checkNoErrors();
 	}
+
+	function testGetToOrderConfirmation() {
+		
+		$this->postLocalPage("go.php", array("test" => true, "Telco" => "Airtel", "Amount" => "6000"));
+		$this->clickSubmit("Submit");
+		$url = $this->getUrl();
+		$expectedUrl = $this->sitePrefix . "confirmed.php";
+		$this->assertEqual($url, $expectedUrl, "Submitting confirmation should take user to order confirmed page.");
+	}
 }

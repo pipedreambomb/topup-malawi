@@ -27,3 +27,7 @@ div.masthead {
 span.popoverme {
 	border-bottom: 1px dotted #999;
 }
+
+span.red {
+	color: red;
+}
