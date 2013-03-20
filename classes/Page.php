@@ -35,6 +35,9 @@ public function render() {
 			<div id="middle" class="">
 				<?php echo $this->content()?>
 			</div>
+			<div id="bottom">
+				<p>Created by George Nixon 2013. Open source, <a href="about.php#open">some rights reserved</a>.</p>
+			</div>
 		</div>
 	</body>
 </html>

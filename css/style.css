@@ -11,6 +11,15 @@
 	float: right;
 }
 
+#bottom {
+	font-size: smaller;
+	color: #BBB;
+}
+
+#bottom a {
+	color: rgb(152, 191, 211);
+}
+
 /* site-wide appearances */
 h1 {
 	font-family: 'Grand Hotel', cursive;
