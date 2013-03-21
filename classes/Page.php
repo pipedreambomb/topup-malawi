@@ -26,7 +26,7 @@ public function render() {
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Buy Topups</title>
+		<title>Buy Topups Online Malawi - <?php echo get_class($this) ?></title>
 		<link rel="stylesheet" href="css/style.css"/>
 		<link href='http://fonts.googleapis.com/css?family=Grand+Hotel|Telex' rel='stylesheet' type='text/css'>
 
